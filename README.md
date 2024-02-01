@@ -1,2 +1,2 @@
-# siddesh_dhurat
+# Digital Music Store Analysis
 SQL PROJECT
