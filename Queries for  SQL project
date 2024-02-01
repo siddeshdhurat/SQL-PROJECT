@@ -1,0 +1,45 @@
+CREATE DATABASE MUSIC_STORE;
+use MUSIC_STORE;
+
+/*who is the senior most employee based on job title?*/
+SELECT * from employee
+order by levels desc
+limit 1;
+
+/* which countries has the most invoices?*/
+
+SELECT count(*) as b, billing_country
+from invoice
+group by billing_country
+order by b desc;
+
+/*what are top 3 values of total invoices?*/
+
+select total from invoice
+order by total desc
+limit 3;
+
+/*which city has the best customer ,we would like to throw a promotional festival
+in the city we made the most money. write a query that returns one city that has highest 
+sum of voice totals, return both the city names and sum of all invoice totals?*/
+
+SELECT SUM(total) as invoice_total , billing_city
+from invoice
+group by billing_city
+order by invoice_total desc;
+
+/*who is best customer , the customer who has spent the most money
+will be declared as the best customer ,write a query that returns
+ the person has spent the most money*/
+ 
+ select * from customer;
+ select  * from invoice;
+ 
+ 
+ 
+ SELECT customer.customer_id, SUM(invoice.total) AS total_spent
+FROM customer
+join invoice  ON customer.customer_id = invoice.customer_id
+GROUP BY customer.customer_id
+ORDER BY total_spent DESC
+LIMIT 1;
